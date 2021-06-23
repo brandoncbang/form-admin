@@ -21,6 +21,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
             'forms' => [],
         ]);
     })->name('form.index');
+    
+    Route::get('/forms/create', function () {
+        return Inertia::render('Form/Create');
+    })->name('form.create');
 });
 
 Route::get('/', function () {
