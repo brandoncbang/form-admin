@@ -17,7 +17,7 @@ class ChangeFormSettingsTest extends TestCase
             'user_id' => $user->id,
         ]);
 
-        $response = $this->actingAs($user)->get("/forms/{$form->id}");
+        $response = $this->actingAs($user)->get("/forms/{$form->id}/settings");
 
         $response->assertStatus(200);
     }
@@ -29,7 +29,7 @@ class ChangeFormSettingsTest extends TestCase
             'user_id' => $user->id,
         ]);
 
-        $response = $this->get("/forms/{$form->id}");
+        $response = $this->get("/forms/{$form->id}/settings");
 
         $response->assertRedirect('/login');
     }
