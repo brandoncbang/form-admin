@@ -17,7 +17,7 @@ use Inertia\Inertia;
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/forms', function () {
-        return Inertia::render('FormList', [
+        return Inertia::render('Form/Index', [
             'forms' => [],
         ]);
     })->name('form.index');
