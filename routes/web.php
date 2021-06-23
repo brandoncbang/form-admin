@@ -15,6 +15,14 @@ use Inertia\Inertia;
 |
 */
 
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    Route::get('/forms', function () {
+        return Inertia::render('FormList', [
+            'forms' => [],
+        ]);
+    })->name('form.index');
+});
+
 Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
