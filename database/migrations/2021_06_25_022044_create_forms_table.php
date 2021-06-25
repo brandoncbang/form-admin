@@ -20,8 +20,8 @@ class CreateFormsTable extends Migration
                 ->onDelete('cascade');
             $table->string('name');
             $table->string('endpoint_url');
-            $table->string('success_url');
-            $table->string('honeypot_field');
+            $table->string('success_url')->nullable();
+            $table->string('honeypot_field')->nullable();
             $table->timestamps();
         });
     }
