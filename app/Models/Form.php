@@ -11,7 +11,6 @@ class Form extends Model
 
     protected $fillable = [
         'name',
-        'endpoint_url',
         'success_url',
         'honeypot_field',
     ];
