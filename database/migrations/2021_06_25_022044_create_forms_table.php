@@ -15,6 +15,9 @@ class CreateFormsTable extends Migration
     {
         Schema::create('forms', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')
+                ->constrained()
+                ->onDelete('cascade');
             $table->string('name');
             $table->string('endpoint_url');
             $table->string('success_url');
