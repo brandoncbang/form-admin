@@ -15,6 +15,10 @@ class CreateFormsTable extends Migration
     {
         Schema::create('forms', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('endpoint_url');
+            $table->string('success_url');
+            $table->string('honeypot_field');
             $table->timestamps();
         });
     }
