@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FormController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -16,15 +17,8 @@ use Inertia\Inertia;
 */
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
-    Route::get('/forms', function () {
-        return Inertia::render('Form/Index', [
-            'forms' => [],
-        ]);
-    })->name('form.index');
-    
-    Route::get('/forms/create', function () {
-        return Inertia::render('Form/Create');
-    })->name('form.create');
+    Route::get('/forms', [FormController::class, 'index'])->name('form.index');
+    Route::get('/forms/create', [FormController::class, 'create'])->name('form.create');
 });
 
 Route::get('/', function () {
