@@ -19,7 +19,6 @@ class CreateFormsTable extends Migration
                 ->constrained()
                 ->onDelete('cascade');
             $table->string('name');
-            $table->string('endpoint_url');
             $table->string('success_url')->nullable();
             $table->string('honeypot_field')->nullable();
             $table->timestamps();
