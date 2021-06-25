@@ -8,4 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Form extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'endpoint_url',
+        'success_url',
+        'honeypot_field',
+    ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
