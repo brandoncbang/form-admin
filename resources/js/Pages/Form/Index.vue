@@ -9,7 +9,11 @@
         <div class="py-12">
             <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
                 <div class="overflow-hidden bg-white shadow-xl sm:rounded-lg">
-                    Forms
+                    <ul>
+                        <li v-for="form in forms" :key="form.id">
+                            {{ form.name }}
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -21,10 +25,7 @@
 
     export default {
         props: {
-            forms: {
-                type: Array,
-                required: true,
-            },
+            forms: Array,
         },
         components: {
             AppLayout,
