@@ -22,7 +22,9 @@ class FormFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => rtrim($this->faker->sentence(), '. '),
+            'success_url' => $this->faker->boolean() ? $this->faker->safeEmail() : null,
+            'honeypot_field' => $this->faker->word(),
         ];
     }
 }
