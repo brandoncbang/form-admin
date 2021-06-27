@@ -20,4 +20,14 @@ class FormEntry extends Model
     {
         return $this->hasMany(FormEntryField::class);
     }
+
+    public function getASender(): string
+    {
+        return '';
+    }
+
+    public function getASubject(): string
+    {
+        return $this->fields()->first();
+    }
 }
