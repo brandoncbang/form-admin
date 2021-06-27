@@ -11,9 +11,31 @@ use Tests\TestCase;
 
 class ListFormEntriesTest extends TestCase
 {
+    use RefreshDatabase;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->user = User::factory()->create();
+
+        $this->form = Form::factory()
+            ->create([
+                'user_id' => $this->user->id,
+            ]);
+        
+        $this->formEntries = FormEntry::factory()
+            ->count(5)
+            ->create([
+                'form_id' => $this->form->id,
+            ]);
+    }
+
     public function test_user_can_see_form_entry_list_screen()
     {
-        
+        $this->actingAs($this->user)
+            ->get(route('form.show', ['id' => $this->form->id]))
+            ->assertStatus(200);
     }
     
     public function test_guest_cannot_see_form_entry_list_screen()
