@@ -22,7 +22,9 @@ class FormEntryFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'is_spam' => $this->faker->boolean(25),
+            'ip_address' => $this->faker->ipv4(),
+            'user_agent' => $this->faker->userAgent(),
         ];
     }
 }
