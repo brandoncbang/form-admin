@@ -8,11 +8,16 @@ use Inertia\Inertia;
 
 class FormController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        $forms = Auth::user()->forms()->paginate(15);
+
+        if ($request->wantsJson()) {
+            return $forms;
+        }
+
         return Inertia::render('Form/Index', [
-            'forms' => Auth::user()->forms()
-                ->paginate(10),
+            'forms' => $forms,
         ]);
     }
 
