@@ -40,16 +40,16 @@ class ListFormEntriesTest extends TestCase
     
     public function test_guest_cannot_see_form_entry_list_screen()
     {
-        
+        return $this->markTestSkipped();
     }
 
     public function test_user_can_list_all_their_form_entries()
     {
-        
+        return $this->markTestSkipped();
     }
 
     public function test_user_cannot_list_all_the_form_entries_of_others()
     {
-        
+        return $this->markTestSkipped();
     }
 }
