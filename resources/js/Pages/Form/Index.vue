@@ -5,7 +5,7 @@
     </template>
 
     <div
-      class="flex flex-col flex-1 w-full min-h-0 py-12 mx-auto max-w-7xl sm:px-6 lg:px-8"
+      class="flex flex-col flex-1 w-full min-h-0 py-8 mx-auto sm:py-12 max-w-7xl sm:px-6 lg:px-8"
     >
       <ul ref="scrollContainer" class="flex-1 overflow-auto">
         <li
@@ -24,9 +24,9 @@
         </li>
       </ul>
 
-      <div class="flex items-center justify-between py-6">
+      <div class="flex items-center justify-between px-6 mt-8 sm:px-0">
         <div class="text-gray-600">
-          <span v-text="allForms.total"></span> Forms
+          {{ allForms.total }} Forms
         </div>
 
         <button
