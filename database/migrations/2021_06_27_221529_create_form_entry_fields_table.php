@@ -20,6 +20,7 @@ class CreateFormEntryFieldsTable extends Migration
                 ->onDelete('cascade');
             $table->string('name');
             $table->text('value');
+            $table->timestamps();
         });
     }
 
