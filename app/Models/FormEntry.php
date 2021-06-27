@@ -15,4 +15,9 @@ class FormEntry extends Model
     {
         return $this->belongsTo(Form::class);
     }
+
+    public function fields()
+    {
+        return $this->hasMany(FormEntryField::class);
+    }
 }
