@@ -7,14 +7,14 @@
     <div
       class="flex flex-col flex-1 w-full min-h-0 py-12 mx-auto max-w-7xl sm:px-6 lg:px-8"
     >
-      <ul class="flex-1 overflow-auto">
+      <ul ref="scrollContainer" class="flex-1 overflow-auto">
         <li
           class="border-t first:border-t-0"
-          v-for="form in forms.data"
+          v-for="form in allForms.data"
           :key="form.id"
         >
           <inertia-link
-            class="block px-6 py-4 bg-white focus:shadow-lg focus:relative focus:z-10 hover:shadow-lg hover:relative hover:z-10 hover:outline-none focus:outline-none"
+            class="block px-6 py-4 bg-white focus:relative focus:z-10 focus:shadow-lg focus:outline-none hover:relative hover:z-10 hover:shadow-lg hover:outline-none"
             :href="route('form.show', { id: form.id })"
           >
             <h3 class="text-lg font-semibold text-gray-800">
@@ -26,7 +26,7 @@
 
       <div class="flex items-center justify-between py-6">
         <div class="text-gray-600">
-          <span v-text="forms.data.length"></span> Forms
+          <span v-text="allForms.total"></span> Forms
         </div>
 
         <button
@@ -40,9 +40,42 @@
 </template>
 
 <script>
+import { onMounted, ref } from "vue";
+import { Inertia } from "@inertiajs/inertia";
 import AppLayout from "@/Layouts/AppLayout";
 
 export default {
+  data() {
+    return {
+      allForms: this.forms,
+    }
+  },
+  mounted() {
+    this.$refs.scrollContainer.onscroll = () => {
+      const el = this.$refs.scrollContainer;
+
+      if (el.scrollTop + el.clientHeight >= el.scrollHeight) {
+        if (!this.allForms.next_page_url) return;
+
+        axios.get(this.allForms.next_page_url, {
+          headers: {
+            'Content-Type': 'application/json;charset=utf-8',
+          }
+        })
+          .then(response => {
+            console.log(response);
+
+            this.allForms = {
+              ...response.data,
+              data: [
+                ...this.allForms.data,
+                ...response.data.data,
+              ]
+            }
+          })
+      }
+    }
+  },
   props: {
     forms: Object,
   },
