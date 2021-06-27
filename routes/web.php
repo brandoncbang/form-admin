@@ -26,16 +26,16 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::post('/forms', [FormController::class, 'store'])
         ->name('form.store');
 
-    Route::get('/forms/{id}', [FormController::class, 'show'])
+    Route::get('/forms/{form}', [FormController::class, 'show'])
         ->name('form.show');
 
-    Route::get('/forms/{id}/settings', [FormController::class, 'edit'])
+    Route::get('/forms/{form}/settings', [FormController::class, 'edit'])
         ->name('form.edit');
 
-    Route::put('/forms/{id}', [FormController::class, 'update'])
+    Route::put('/forms/{form}', [FormController::class, 'update'])
         ->name('form.update');
 
-    Route::delete('/forms/{id}', [FormController::class, 'destroy'])
+    Route::delete('/forms/{form}', [FormController::class, 'destroy'])
         ->name('form.destroy');
 });
 
