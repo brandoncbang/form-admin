@@ -57,14 +57,8 @@ export default {
       if (el.scrollTop + el.clientHeight >= el.scrollHeight) {
         if (!this.allForms.next_page_url) return;
 
-        axios.get(this.allForms.next_page_url, {
-          headers: {
-            'Content-Type': 'application/json;charset=utf-8',
-          }
-        })
+        axios.get(this.allForms.next_page_url)
           .then(response => {
-            console.log(response);
-
             this.allForms = {
               ...response.data,
               data: [
