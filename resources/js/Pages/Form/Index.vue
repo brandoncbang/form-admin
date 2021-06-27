@@ -40,8 +40,6 @@
 </template>
 
 <script>
-import { onMounted, ref } from "vue";
-import { Inertia } from "@inertiajs/inertia";
 import AppLayout from "@/Layouts/AppLayout";
 
 export default {
