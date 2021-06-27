@@ -14,10 +14,10 @@
           :key="form.id"
         >
           <inertia-link
-            class="block px-6 py-4 bg-white focus:relative focus:z-10 focus:shadow-lg focus:outline-none hover:relative hover:z-10 hover:shadow-lg hover:outline-none"
+            class="block px-6 py-4 bg-white group focus:outline-none hover:outline-none"
             :href="route('form.show', { id: form.id })"
           >
-            <h3 class="text-lg font-semibold text-gray-800">
+            <h3 class="text-lg font-semibold text-gray-800 group-focus:underline group-hover:underline">
               {{ form.name }}
             </h3>
           </inertia-link>
