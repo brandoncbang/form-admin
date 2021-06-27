@@ -11,7 +11,11 @@
                 <div class="overflow-hidden bg-white shadow-xl sm:rounded-lg">
                     <ul>
                         <li v-for="form in forms.data" :key="form.id">
-                            {{ form.name }}
+                            <inertia-link
+                                :href="route('form.show', {'id': form.id})"
+                            >
+                                <h3>{{ form.name }}</h3>
+                            </inertia-link>
                         </li>
                     </ul>
                 </div>
