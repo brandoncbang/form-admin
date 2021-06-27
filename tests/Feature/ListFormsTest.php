@@ -29,20 +29,20 @@ class ListFormsTest extends TestCase
     public function test_user_can_see_form_list_screen()
     {
         $this->actingAs($this->user)
-            ->get('/forms')
+            ->get(route('form.index'))
             ->assertStatus(200);
     }
 
     public function test_guest_cannot_see_form_list_screen()
     {
-        $this->get('/forms')
+        $this->get(route('form.index'))
             ->assertRedirect('/login');
     }
 
     public function test_user_can_list_all_their_forms()
     {
         $this->actingAs($this->user)
-            ->get('/forms')
+            ->get(route('form.index'))
             ->assertInertia(
                 fn (Assert $assert) => $assert
                     ->component('Form/Index')
@@ -80,7 +80,7 @@ class ListFormsTest extends TestCase
         $other_user = User::factory()->create();
         
         $this->actingAs($other_user)
-            ->get('/forms')
+            ->get(route('form.index'))
             ->assertInertia(
                 fn (Assert $assert) => $assert
                     ->has('forms.data', 0)
