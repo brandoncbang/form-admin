@@ -3,17 +3,17 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 
 class Form extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'name',
-        'success_url',
-        'honeypot_field',
-    ];
+    public function resolveRouteBinding($value, $field = null)
+    {
+        return Auth::user()->forms()->findOrFail($value);
+    }
 
     public function user()
     {
