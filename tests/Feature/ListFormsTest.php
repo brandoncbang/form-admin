@@ -45,26 +45,32 @@ class ListFormsTest extends TestCase
             ->get('/forms')
             ->assertInertia(
                 fn (Assert $assert) => $assert
-                    ->has('forms', 5)
-                    ->has('forms.0', fn (Assert $assert) => $assert
+                    ->component('Form/Index')
+                    ->has('forms.data', 5)
+                    ->has('forms.data.0', fn (Assert $assert) => $assert
                         ->where('id', $this->forms[0]->id)
                         ->where('name', $this->forms[0]->name)
+                        ->etc()
                     )
-                    ->has('forms.1', fn (Assert $assert) => $assert
+                    ->has('forms.data.1', fn (Assert $assert) => $assert
                         ->where('id', $this->forms[1]->id)
                         ->where('name', $this->forms[1]->name)
+                        ->etc()
                     )
-                    ->has('forms.2', fn (Assert $assert) => $assert
+                    ->has('forms.data.2', fn (Assert $assert) => $assert
                         ->where('id', $this->forms[2]->id)
                         ->where('name', $this->forms[2]->name)
+                        ->etc()
                     )
-                    ->has('forms.3', fn (Assert $assert) => $assert
+                    ->has('forms.data.3', fn (Assert $assert) => $assert
                         ->where('id', $this->forms[3]->id)
                         ->where('name', $this->forms[3]->name)
+                        ->etc()
                     )
-                    ->has('forms.4', fn (Assert $assert) => $assert
+                    ->has('forms.data.4', fn (Assert $assert) => $assert
                         ->where('id', $this->forms[4]->id)
                         ->where('name', $this->forms[4]->name)
+                        ->etc()
                     )
             );
     }
@@ -77,7 +83,7 @@ class ListFormsTest extends TestCase
             ->get('/forms')
             ->assertInertia(
                 fn (Assert $assert) => $assert
-                    ->has('forms', 0)
+                    ->has('forms.data', 0)
             );
     }
 }
