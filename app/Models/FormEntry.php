@@ -23,11 +23,12 @@ class FormEntry extends Model
 
     public function getASender(): string
     {
-        return '';
+        return 'Sender';
+        return null;
     }
 
     public function getASubject(): string
     {
-        return $this->fields()->first();
+        return $this->fields()->first()->value ?? 'No fields';
     }
 }
