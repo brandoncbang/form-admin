@@ -42,55 +42,28 @@ class ListFormEntriesTest extends TestCase
     public function test_user_can_see_form_entry_list_screen()
     {
         $this->actingAs($this->user)
-            ->get(route('form.show', ['id' => $this->form->id]))
+            ->get(route('form.show', ['form' => $this->form]))
             ->assertStatus(200);
     }
     
     public function test_guest_cannot_see_form_entry_list_screen()
     {
-        $this->get(route('form.show', ['id' => $this->form->id]))
+        $this->get(route('form.show', ['form' => $this->form]))
             ->assertRedirect('/login');
     }
 
     public function test_user_can_list_all_their_form_entries()
     {
         $this->actingAs($this->user)
-            ->get(route('form.show', ['id' => $this->form->id]))
+            ->get(route('form.show', ['form' => $this->form]))
             ->assertInertia(
                 fn (Assert $assert) => $assert
                     ->component('Form/Show')
-                    ->has('form_entries.data', 5)
-                    ->has('form_entries.data.0', fn (Assert $assert) => $assert
+                    ->has('entries.data', 5)
+                    ->has('entries.data.0', fn (Assert $assert) => $assert
                         ->where('id', $this->formEntries[0]->id)
-                        ->where('is_spam', $this->formEntries[0]->is_spam)
-                        ->where('ip_address', $this->formEntries[0]->ip_address)
-                        ->where('user_agent', $this->formEntries[0]->user_agent)
-                        ->has('form_entry_fields', 5)
-                        ->has('form_entry_fields.0', fn (Assert $assert) => $assert
-                            ->where('id', $this->formEntryFields[0]->id)
-                            ->where('name', $this->formEntryFields[0]->name)
-                            ->where('value', $this->formEntryFields[0]->value)
-                        )
-                        ->has('form_entry_fields.1', fn (Assert $assert) => $assert
-                            ->where('id', $this->formEntryFields[1]->id)
-                            ->where('name', $this->formEntryFields[1]->name)
-                            ->where('value', $this->formEntryFields[1]->value)
-                        )
-                        ->has('form_entry_fields.2', fn (Assert $assert) => $assert
-                            ->where('id', $this->formEntryFields[2]->id)
-                            ->where('name', $this->formEntryFields[2]->name)
-                            ->where('value', $this->formEntryFields[2]->value)
-                        )
-                        ->has('form_entry_fields.3', fn (Assert $assert) => $assert
-                            ->where('id', $this->formEntryFields[3]->id)
-                            ->where('name', $this->formEntryFields[3]->name)
-                            ->where('value', $this->formEntryFields[3]->value)
-                        )
-                        ->has('form_entry_fields.4', fn (Assert $assert) => $assert
-                            ->where('id', $this->formEntryFields[4]->id)
-                            ->where('name', $this->formEntryFields[4]->name)
-                            ->where('value', $this->formEntryFields[4]->value)
-                        )
+                        ->where('sender', $this->formEntries[0]->getASender())
+                        ->where('subject', $this->formEntries[0]->getASubject())
                     )
             );
     }
