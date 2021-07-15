@@ -25,12 +25,12 @@ class FormController extends Controller
 
     public function create()
     {
-        
+
     }
 
     public function store()
     {
-        
+
     }
 
     public function show(Form $form)
@@ -42,26 +42,27 @@ class FormController extends Controller
             ],
             'entries' => $form->entries()
                 ->paginate(15)
-                ->through(fn (FormEntry $entry) => [
+                ->through(fn(FormEntry $entry) => [
                     'id' => $entry->id,
                     'sender' => $entry->getASender(),
                     'subject' => $entry->getASubject(),
+                    'createdAt' => $entry->created_at,
                 ]),
         ]);
     }
 
     public function edit()
     {
-        
+
     }
 
     public function update()
     {
-        
+
     }
 
     public function destroy()
     {
-        
+
     }
 }
