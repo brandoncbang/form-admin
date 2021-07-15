@@ -28,7 +28,7 @@
                                     </h3>
 
                                     <div>
-                                        {{ entry.createdAt }}
+                                        {{ relativeTime(entry.createdAt) }}
                                     </div>
                                 </div>
 
@@ -53,9 +53,22 @@
 </template>
 
 <script>
+import {DateTime} from "luxon";
+
 import AppLayout from "@/Layouts/AppLayout";
 
 export default {
+    data() {
+        return {}
+    },
+    mounted() {
+        // Maybe update time ago on interval?
+    },
+    methods: {
+        relativeTime(t) {
+            return DateTime.fromISO(t).toRelative();
+        }
+    },
     props: {
         form: Object,
         entries: Object,
