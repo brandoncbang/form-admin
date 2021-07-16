@@ -48,6 +48,12 @@
                     Open an entry to view its contents here.
                 </div>
             </div>
+
+            <div class="flex justify-between items-center px-6 mt-8 sm:px-0">
+                <div class="text-gray-600">
+                    {{ entries.total }} Entries
+                </div>
+            </div>
         </div>
     </app-layout>
 </template>
