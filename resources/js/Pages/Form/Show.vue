@@ -19,15 +19,15 @@
                             :key="entry.id"
                         >
                             <inertia-link
-                                class="block py-3 px-6"
+                                class="block py-3 px-4"
                                 href="#"
                             >
-                                <div class="flex justify-between">
-                                    <h3 class="text-xl font-semibold">
+                                <div class="flex justify-between items-center">
+                                    <h3 class="flex-1 text-xl font-semibold truncate">
                                         {{ entry.sender }}
                                     </h3>
 
-                                    <div>
+                                    <div class="ml-6">
                                         {{ relativeTime(entry.createdAt) }}
                                     </div>
                                 </div>
