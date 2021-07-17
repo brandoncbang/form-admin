@@ -22,7 +22,8 @@ class CreateFormEntriesTable extends Migration
                 ->default(false);
             $table->ipAddress('ip_address');
             $table->string('user_agent');
-            $table->timeStamp('read_at');
+            $table->timeStamp('read_at')
+                ->nullable();
             $table->timestamps();
         });
     }
