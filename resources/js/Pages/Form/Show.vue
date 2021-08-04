@@ -23,7 +23,7 @@
                                 href="#"
                             >
                                 <div class="flex justify-between items-center">
-                                    <h3 class="flex-1 text-xl font-semibold truncate">
+                                    <h3 class="flex-1 text-lg font-semibold truncate">
                                         {{ entry.sender }}
                                     </h3>
 
