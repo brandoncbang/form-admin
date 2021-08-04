@@ -25,13 +25,13 @@ class ListFormEntriesTest extends TestCase
             ->create([
                 'user_id' => $this->user->id,
             ]);
-        
+
         $this->formEntries = FormEntry::factory()
             ->count(5)
             ->create([
                 'form_id' => $this->form->id,
             ]);
-        
+
         $this->formEntryFields = FormEntryField::factory()
             ->count(5)
             ->create([
@@ -45,7 +45,7 @@ class ListFormEntriesTest extends TestCase
             ->get(route('form.show', ['form' => $this->form]))
             ->assertStatus(200);
     }
-    
+
     public function test_guest_cannot_see_form_entry_list_screen()
     {
         $this->get(route('form.show', ['form' => $this->form]))
@@ -64,6 +64,7 @@ class ListFormEntriesTest extends TestCase
                         ->where('id', $this->formEntries[0]->id)
                         ->where('sender', $this->formEntries[0]->getASender())
                         ->where('subject', $this->formEntries[0]->getASubject())
+                        ->etc()
                     )
             );
     }
