@@ -13,16 +13,16 @@ class CreateFormEntryTest extends TestCase
 {
     public function test_form_can_receive_post_request_to_its_endpoint()
     {
-        return $this->markTestSkipped();
+        $this->markTestSkipped();
     }
 
     public function test_form_creates_new_entry_from_post_data()
     {
-        return $this->markTestSkipped();
+        $this->markTestSkipped();
     }
 
     public function test_form_redirects_when_success_url_is_set()
     {
-        return $this->markTestSkipped();
+        $this->markTestSkipped();
     }
 }

@@ -11,6 +11,6 @@ class CreateFormTest extends TestCase
 {
     public function test_user_can_create_a_new_form()
     {
-        return $this->markTestSkipped();
+        $this->markTestSkipped();
     }
 }

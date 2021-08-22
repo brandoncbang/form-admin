@@ -71,6 +71,6 @@ class ListFormEntriesTest extends TestCase
 
     public function test_user_cannot_list_all_the_form_entries_of_others()
     {
-        return $this->markTestSkipped();
+        $this->markTestSkipped();
     }
 }

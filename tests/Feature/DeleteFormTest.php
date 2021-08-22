@@ -10,6 +10,6 @@ class DeleteFormTest extends TestCase
 {
     public function test_user_can_delete_a_form()
     {
-        return $this->markTestSkipped();
+        $this->markTestSkipped();
     }
 }
