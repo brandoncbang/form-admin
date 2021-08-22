@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Jetstream;
 
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
@@ -19,7 +19,7 @@ class EmailVerificationTest extends TestCase
     public function test_email_verification_screen_can_be_rendered()
     {
         if (! Features::enabled(Features::emailVerification())) {
-            return $this->markTestSkipped('Email verification not enabled.');
+            $this->markTestSkipped('Email verification not enabled.');
         }
 
         $user = User::factory()->withPersonalTeam()->create([
@@ -34,7 +34,7 @@ class EmailVerificationTest extends TestCase
     public function test_email_can_be_verified()
     {
         if (! Features::enabled(Features::emailVerification())) {
-            return $this->markTestSkipped('Email verification not enabled.');
+            $this->markTestSkipped('Email verification not enabled.');
         }
 
         Event::fake();
@@ -60,7 +60,7 @@ class EmailVerificationTest extends TestCase
     public function test_email_can_not_verified_with_invalid_hash()
     {
         if (! Features::enabled(Features::emailVerification())) {
-            return $this->markTestSkipped('Email verification not enabled.');
+            $this->markTestSkipped('Email verification not enabled.');
         }
 
         $user = User::factory()->create([

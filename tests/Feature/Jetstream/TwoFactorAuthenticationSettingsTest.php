@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Jetstream;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -14,7 +14,7 @@ class TwoFactorAuthenticationSettingsTest extends TestCase
     public function test_two_factor_authentication_can_be_enabled()
     {
         if (! Features::canManageTwoFactorAuthentication()) {
-            return $this->markTestSkipped('Two factor authentication is not enabled.');
+            $this->markTestSkipped('Two factor authentication is not enabled.');
         }
 
         $this->actingAs($user = User::factory()->create());
@@ -30,7 +30,7 @@ class TwoFactorAuthenticationSettingsTest extends TestCase
     public function test_recovery_codes_can_be_regenerated()
     {
         if (! Features::canManageTwoFactorAuthentication()) {
-            return $this->markTestSkipped('Two factor authentication is not enabled.');
+            $this->markTestSkipped('Two factor authentication is not enabled.');
         }
 
         $this->actingAs($user = User::factory()->create());
@@ -51,7 +51,7 @@ class TwoFactorAuthenticationSettingsTest extends TestCase
     public function test_two_factor_authentication_can_be_disabled()
     {
         if (! Features::canManageTwoFactorAuthentication()) {
-            return $this->markTestSkipped('Two factor authentication is not enabled.');
+            $this->markTestSkipped('Two factor authentication is not enabled.');
         }
 
         $this->actingAs($user = User::factory()->create());
