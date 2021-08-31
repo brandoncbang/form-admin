@@ -19,11 +19,12 @@ class ListFormEntriesTest extends TestCase
     {
         parent::setUp();
 
-        $this->user = User::factory()->create();
+        $this->user_a = User::factory()->create();
+        $this->user_b = User::factory()->create();
 
         $this->form = Form::factory()
             ->create([
-                'user_id' => $this->user->id,
+                'user_id' => $this->user_a->id,
             ]);
 
         $this->formEntries = FormEntry::factory()
@@ -41,7 +42,7 @@ class ListFormEntriesTest extends TestCase
 
     public function test_user_can_see_form_entry_list_screen()
     {
-        $this->actingAs($this->user)
+        $this->actingAs($this->user_a)
             ->get(route('form.show', ['form' => $this->form]))
             ->assertStatus(200);
     }
@@ -54,7 +55,7 @@ class ListFormEntriesTest extends TestCase
 
     public function test_user_can_list_all_their_form_entries()
     {
-        $this->actingAs($this->user)
+        $this->actingAs($this->user_a)
             ->get(route('form.show', ['form' => $this->form]))
             ->assertInertia(
                 fn (Assert $assert) => $assert
@@ -71,6 +72,8 @@ class ListFormEntriesTest extends TestCase
 
     public function test_user_cannot_list_all_the_form_entries_of_others()
     {
-        $this->markTestSkipped();
+        $this->actingAs($this->user_b)
+            ->get(route('form.show', ['form' => $this->form]))
+            ->assertStatus(404);
     }
 }
