@@ -32,12 +32,6 @@ class ListFormEntriesTest extends TestCase
             ->create([
                 'form_id' => $this->form->id,
             ]);
-
-        $this->formEntryFields = FormEntryField::factory()
-            ->count(5)
-            ->create([
-                'form_entry_id' => $this->formEntries[0]->id,
-            ]);
     }
 
     public function test_user_can_see_form_entry_list_screen()

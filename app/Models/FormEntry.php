@@ -11,6 +11,10 @@ class FormEntry extends Model
 
     protected $fillable = [];
 
+    protected $casts = [
+        'data' => 'json',
+    ];
+
     public function form()
     {
         return $this->belongsTo(Form::class);

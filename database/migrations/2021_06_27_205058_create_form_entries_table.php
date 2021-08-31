@@ -22,6 +22,8 @@ class CreateFormEntriesTable extends Migration
                 ->default(false);
             $table->ipAddress('ip_address');
             $table->string('user_agent');
+            $table->json('data')
+                ->nullable();
             $table->timeStamp('read_at')
                 ->nullable();
             $table->timestamps();
