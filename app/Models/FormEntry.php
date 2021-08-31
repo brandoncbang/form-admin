@@ -20,11 +20,6 @@ class FormEntry extends Model
         return $this->belongsTo(Form::class);
     }
 
-    public function fields()
-    {
-        return $this->hasMany(FormEntryField::class);
-    }
-
     public function getASender(): string
     {
         return 'Sender';
@@ -33,6 +28,6 @@ class FormEntry extends Model
 
     public function getASubject(): string
     {
-        return $this->fields()->first()->value ?? 'No fields';
+        return 'Lorem ipsum dolor sit amet...';
     }
 }
