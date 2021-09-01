@@ -36,7 +36,7 @@ class FormEntryFactory extends Factory
 
         for ($i = 0; $i < random_int(0, 17); $i++) {
             $key = '';
-            $key_words = $this->faker->words(random_int(1, 5));
+            $key_words = $this->faker->words(random_int(1, 5), true);
             $key_case_random_index = random_int(0, 2);
 
             $value = null;
@@ -53,7 +53,7 @@ class FormEntryFactory extends Factory
             }
 
             if ($value_type_random_index === 0) {
-                $value = $this->faker->words(random_int(1, 20));
+                $value = $this->faker->words(random_int(1, 20), true);
             }
             if ($value_type_random_index === 1) {
                 $value = $this->faker->numberBetween(0, 255);
